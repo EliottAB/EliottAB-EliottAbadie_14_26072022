@@ -9,6 +9,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   font-family: "Roboto";
+  background: linear-gradient(#6f8822 20%, white 180%);
+  position: relative;
 }
 
 code {
@@ -18,4 +20,6 @@ code {
 
 * {
   font-size: 1em;
+  margin: 0;
+  padding: 0;
 }

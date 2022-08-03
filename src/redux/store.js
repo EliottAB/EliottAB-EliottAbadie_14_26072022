@@ -1,7 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
-import thunk from 'redux-thunk';
 
 const persistConfig = {
     key: 'root',
@@ -11,21 +10,19 @@ const persistConfig = {
 const employeesSlice = createSlice({
     name: "employees",
     initialState: {
-        firstName: "",
-        lastName: "",
-        birthDate: "",
-        startDate: "",
-        adress: "",
-        departement: ""
+        employees: []
     },
     reducers:{
         createEmployee: (state, action) => {
-            state.firstName = action.payload.firstName
-            state.lastName = action.payload.lastName
-            state.birthDate = action.payload.birthDate
-            state.startDate = action.payload.startDate
-            state.adress = action.payload.adress
-            state.departement = action.payload.departement
+            let employee = {
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
+                birthDate: action.payload.birthDate,
+                startDate: action.payload.startDate,
+                adress: action.payload.adress,
+                department: action.payload.department,
+            }
+            state.employees.push(employee)
         }
     }
 })
@@ -37,7 +34,7 @@ export const { createEmployee } = employeesSlice.actions
 export const store = configureStore({
     reducer: persistedReducer,
     devTools: process.env.NODE_ENV !== 'production',
-    middleware: [thunk],
+    middleware: [],
 })
 
 export const persistor = persistStore(store)

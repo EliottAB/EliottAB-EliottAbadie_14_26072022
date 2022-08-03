@@ -1,16 +1,13 @@
-import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import "../css/components/header.css"
 
-export function Header(){
+export function Header(props){
 
     return(
-        <Fragment>
-            <h1>HRnet</h1>
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/employees">Employees</Link>
-            </nav>
-        </Fragment>
+        <header>
+            <h2>{props.page === "home" ? "Create Employee" : "Employees"}</h2>
+            <Link to="/employees" className="employeeLink" >{props.page === "home" ? "Employees" : "Create Employee"}</Link>
+        </header>
     )
 
 }

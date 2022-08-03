@@ -1,0 +1,52 @@
+header{
+    display: flex;
+    height: 10em;
+    align-items: center;
+}
+
+header h2{
+    margin-left: 50%;
+    color: white;
+    font-size: 3em;
+    width: fit-content;
+    text-shadow: .1em .1em .2em black;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+header a{
+    position: relative;
+    min-width: 5em;
+    padding: .5em .8em;
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-decoration: none;
+    color: #6f8822;
+    background-color: white;
+    border-radius: .5em;
+    z-index: 0;
+    transform: translateX(-3em);
+    transition: color .4s;
+}
+
+header a:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(100, 100, 180);
+    border-radius: .5em;
+    z-index: -1;
+    transition: opacity .4s, width .4s;
+}
+
+header a:hover{
+    color: white;
+}
+
+header a:hover:before{
+    width: 100%;
+}
