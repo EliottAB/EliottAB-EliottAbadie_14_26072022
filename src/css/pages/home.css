@@ -1,4 +1,4 @@
-main{
+.homemain{
     min-height: calc(100vh - 10em);
     display: flex;
     justify-content: center;
@@ -11,10 +11,10 @@ form{
     align-items: flex-start;
     overflow: hidden;
     flex-wrap: wrap;
-    gap: 2.5em 2em;
+    gap: 1em 2em;
     width: 50%;
     height: 30em;
-    margin: 0 0 6em -10em;
+    margin: 0 0 3em -10em;
     padding: 3em 5em 2em 8em;
     text-align: center;
     background-color: white;
@@ -28,23 +28,11 @@ form{
     }
 }
 
-.backgroundImage{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 40%;
-    object-fit: cover;
-    object-position: bottom;
-    z-index: -1;
-}
-
 .address{
     display: flex;
     flex-direction: column;
-    padding: 0 2em 2em;
-    gap: 1em;
+    padding: 0 2em;
+    gap: .2em;
 }
 
 .savebutton{
