@@ -1,5 +1,5 @@
 import "../css/components/logo.css"
-import LOGO from "../assets/logo.png"
+import LOGO from "../assets/logo.webp"
 
 export function Logo(){
 

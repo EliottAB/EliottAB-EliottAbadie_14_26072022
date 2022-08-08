@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import BACKGROUND from "../assets/background.jpg"
+import BACKGROUND from "../assets/background.webp"
 import { Header } from "../components/Header";
 import "../css/pages/employees.css"
 

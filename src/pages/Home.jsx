@@ -2,7 +2,7 @@ import React from "react";
 import { Fragment } from "react"
 import { Logo } from "../components/Logo";
 import "../css/pages/home.css"
-import BACKGROUND from "../assets/background.jpg"
+import BACKGROUND from "../assets/background.webp"
 import { Header } from "../components/Header";
 import { FormCreate } from "../components/FormCreate";
 

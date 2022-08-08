@@ -1,17 +1,21 @@
 import React from "react";
-import { useState, useMemo } from "react"
+import { useState } from "react"
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import "../css/pages/home.css"
 
-export const Input = React.memo(({type, label, rules, options})=>{
+export const Input = React.memo(({type, label, rules, options, checkError})=>{
     
     const [inputvalue, changeInputValue] = useState(type === "date" ? new Date() : "");
     const [inputError, setInputError] = useState({error: false, message: " "})
     
-    function handleInput(change, value, setError, rules){
-        change(value)
+    function handleInput(change, value, setError, rules, type){
+        if (type !== "number") {
+            change(value)
+        }else{
+            change(value)
+        }
         let error = false
         if (rules === "text") {
             if (value.length > 0 && value.length < 3) {
@@ -30,6 +34,7 @@ export const Input = React.memo(({type, label, rules, options})=>{
         if (rules === "birthdate") {
             if(value > new Date()){
                 setError({error: true, message: "Negative birth date"})
+                error = true
             }else{
                 setError({error: false, message: " "})
             }
@@ -43,6 +48,13 @@ export const Input = React.memo(({type, label, rules, options})=>{
                 setError({error: false, message: " "})
             }
         }
+
+        if (error && checkError !== undefined) {
+            checkError(true)
+        }
+        if(!error && checkError !== undefined){
+            checkError(false)
+        }
     }
     
     function getComponent(){
@@ -51,12 +63,12 @@ export const Input = React.memo(({type, label, rules, options})=>{
                 <TextField 
                     label={label}
                     variant="standard"
-                    type={type}
+                    InputProps={{ inputProps: type === "number" ? { inputMode: 'numeric', pattern: "[0-9]{5}" } : {} }}
                     required
                     error={inputError.error}
                     helperText={inputError.message}
                     value={inputvalue}
-                    onChange={(e) => handleInput(changeInputValue, e.target.value, setInputError, rules)}
+                    onChange={(e) => handleInput(changeInputValue, e.target.value, setInputError, rules, type)}
                 />
                 )
             }
