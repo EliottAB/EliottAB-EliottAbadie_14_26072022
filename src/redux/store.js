@@ -19,7 +19,7 @@ const employeesSlice = createSlice({
                 lastName: action.payload.lastName,
                 birthDate: action.payload.birthDate,
                 startDate: action.payload.startDate,
-                adress: action.payload.adress,
+                address: action.payload.address,
                 department: action.payload.department,
             }
             state.employees.push(employee)

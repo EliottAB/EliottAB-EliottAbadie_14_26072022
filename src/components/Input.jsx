@@ -5,18 +5,13 @@ import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import "../css/pages/home.css"
 
-export const Input = React.memo(({type, label, rules, options, checkError})=>{
+export const Input = React.memo(({type, label, rules, options, inputInfos, setInfos})=>{
     
-    const [inputvalue, changeInputValue] = useState(type === "date" ? new Date() : "");
     const [inputError, setInputError] = useState({error: false, message: " "})
     
-    function handleInput(change, value, setError, rules, type){
-        if (type !== "number") {
-            change(value)
-        }else{
-            change(value)
-        }
+    function handleInput(value, setError, rules){
         let error = false
+
         if (rules === "text") {
             if (value.length > 0 && value.length < 3) {
                 setError({error: true, message: "Must have more than 2 letters"})
@@ -49,11 +44,11 @@ export const Input = React.memo(({type, label, rules, options, checkError})=>{
             }
         }
 
-        if (error && checkError !== undefined) {
-            checkError(true)
+        if (error) {
+            setInfos({error: true, value: value})
         }
-        if(!error && checkError !== undefined){
-            checkError(false)
+        if(!error){
+            setInfos({error: false, value: value})
         }
     }
     
@@ -67,8 +62,8 @@ export const Input = React.memo(({type, label, rules, options, checkError})=>{
                     required
                     error={inputError.error}
                     helperText={inputError.message}
-                    value={inputvalue}
-                    onChange={(e) => handleInput(changeInputValue, e.target.value, setInputError, rules, type)}
+                    value={inputInfos.value}
+                    onChange={(e) => handleInput(e.target.value, setInputError, rules)}
                 />
                 )
             }
@@ -76,9 +71,9 @@ export const Input = React.memo(({type, label, rules, options, checkError})=>{
             return(
                 <DatePicker
                     label={label}
-                    value={inputvalue}
+                    value={inputInfos.value}
                     onChange={(e) => {
-                        handleInput(changeInputValue, e, setInputError, rules)
+                        handleInput(e, setInputError, rules)
                     }}
                     renderInput={(params) => <TextField 
                         {...params} 
@@ -95,16 +90,16 @@ export const Input = React.memo(({type, label, rules, options, checkError})=>{
                     disablePortal
                     options={options}
                     sx={{ width: 300 }}
+                    value={inputInfos.value}
+                    onChange={(e) => {
+                        handleInput(e.target.textContent, setInputError)
+                    }}
                     renderInput={(params) => <TextField 
                         {...params}
                         label={label}
                         required
                         error={inputError.error}
                         helperText={inputError.message}
-                        value={inputvalue}
-                        onChange={(e) => {
-                            handleInput(changeInputValue, e.target.value, setInputError)
-                        }}
                         />
                     }
                 />
