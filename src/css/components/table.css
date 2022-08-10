@@ -1,0 +1,58 @@
+.tableContainer{
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 3em auto;
+    background-color: white;
+    padding-right: 2em;
+    border-radius: 1em;
+}
+
+table{
+    position: relative;
+    margin: 2em 0 2em 2em;
+    width: 68em;
+    border-collapse: collapse;
+}
+
+table::after{
+    content: "";
+    position: absolute;
+    right: -2em;
+    height: 100%;
+    width: 2em;
+    background-color: white;
+}
+
+tbody{
+    text-align: center;
+    font-weight: 700;
+}
+
+tbody tr:nth-child(odd){
+    color: white;
+    background-color: rgb(100, 150, 100);
+}
+
+thead tr{
+    height: 4em;
+}
+
+th, td{
+    padding: 0 1em;
+}
+
+td{
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+th button{
+    cursor: pointer;
+    font-weight: 700;
+    background-color: transparent;
+    border: none;
+}
+
+tbody tr{
+    height: 6em;
+}

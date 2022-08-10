@@ -1,12 +1,15 @@
 export function TableRow({employee}){
 
+    const startDate = new Date(employee.startDate)
+    const birthDate = new Date(employee.birthDate)
+
     return(
         <tr>
             <td>{employee.firstName}</td>
             <td>{employee.lastName}</td>
-            <td>{new Date(employee.startDate).toISOString().split("T")[0]}</td>
+            <td>{startDate.getDate() + "/ " + startDate.getMonth() + "/ " + startDate.getFullYear()}</td>
             <td>{employee.department}</td>
-            <td>{new Date(employee.birthDate).toISOString().split("T")[0]}</td>
+            <td>{birthDate.getDate() + "/ " + birthDate.getMonth() + "/ " + birthDate.getFullYear()}</td>
             <td>{employee.street}</td>
             <td>{employee.city}</td>
             <td>{employee.state}</td>

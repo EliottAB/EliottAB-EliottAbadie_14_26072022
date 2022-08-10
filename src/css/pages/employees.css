@@ -1,0 +1,6 @@
+.employeesmain{
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    padding: 0 1em;
+}
