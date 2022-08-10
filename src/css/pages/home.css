@@ -1,68 +1,6 @@
-.homemain{
+main{
     min-height: calc(100vh - 10em);
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    overflow: hidden;
-    flex-wrap: wrap;
-    gap: 1em 2em;
-    width: 50%;
-    height: 30em;
-    margin: 0 0 3em -10em;
-    padding: 3em 5em 2em 8em;
-    text-align: center;
-    background-color: white;
-    border-radius: 1em;
-}
-
-@media screen and (max-width: 1250px){
-    form{
-        flex-direction: row;
-        height: auto;
-    }
-}
-
-.address{
-    display: flex;
-    flex-direction: column;
-    padding: 0 2em;
-    gap: .2em;
-}
-
-.savebutton{
-    position: relative;
-    align-self: flex-end;
-    margin-left: auto;
-    padding: .5em 1em;
-    overflow: hidden;
-    cursor: pointer;
-    font-weight: 700;
-    background-color: #6f8822;
-    color: white;
-    border: none;
-    border-radius: .5em;
-    z-index: 0;
-}
-
-.savebutton::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    background-color: rgb(100, 100, 180);
-    border-radius: .5em;
-    z-index: -1;
-    transition: width .4s;
-}
-
-.savebutton:hover:before{
-    width: 100%;
 }

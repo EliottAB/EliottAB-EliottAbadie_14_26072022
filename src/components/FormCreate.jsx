@@ -3,9 +3,9 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { departments, states } from "../formDatas";
 import { Input } from "../components/Input.jsx";
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { createEmployee } from "../redux/store";
-import "../css/pages/home.css"
+import "../css/components/formcreate.css"
 
 export function FormCreate(){
 
@@ -18,10 +18,8 @@ export function FormCreate(){
     const [state, setState] = useState({error: false, value: null})
     const [zip, setZip] = useState({error: false, value: ""})
     const [department, setDepartment] = useState({error: false, value: null})
-
+    
     const dispatch = useDispatch()
-    const employees = useSelector(state => state.employees)
-    console.log(employees)
 
     function handleSubmit(e){
         e.preventDefault()
@@ -31,12 +29,10 @@ export function FormCreate(){
                 lastName: lastName.value,
                 birthDate: birthDate.value,
                 startDate: startDate.value,
-                address: {
-                    city: city.value,
-                    street: street.value,
-                    state: state.value,
-                    zip: zip.value
-                },
+                city: city.value,
+                street: street.value,
+                state: state.value,
+                zip: zip.value,
                 department: department.value
             }))
         }
