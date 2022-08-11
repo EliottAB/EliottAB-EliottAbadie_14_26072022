@@ -1,4 +1,4 @@
-import _, { lastIndexOf } from "lodash"
+import _ from "lodash"
 import React, { useCallback, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import "../css/components/table.css"
@@ -9,7 +9,7 @@ export function Table(){
     const defaultSort = "firstName"
     const employees = useSelector(state => state.employees)
 
-    const [maxEmployees, setMaxEmployees] = useState(10)
+    const [maxEmployees, setMaxEmployees] = useState(5)
     const [page, setPage] = useState(0)
     const [sortedEmployees, setSortedEmployees] = useState(()=>{
         const baseValue = _.orderBy(employees, [defaultSort], ["asc"])
@@ -34,7 +34,7 @@ export function Table(){
         {
             sortedEmployees[0] ?
             <React.Fragment>
-                <select className="maxrows" onChange={(e)=>{setMaxEmployees(parseInt(e.target.value))}}>
+                <select className="maxrows" onChange={(e)=>{setPage(0); setMaxEmployees(parseInt(e.target.value))}}>
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
@@ -59,6 +59,11 @@ export function Table(){
                             {sortedEmployees[page].map((employee) => <TableRow employee={employee} key={sortedEmployees[page].indexOf(employee)}/>)}
                         </tbody>
                     </table>
+                </div>
+                <div className="pagination">
+                    <button className="prevpage" onClick={()=>{setPage((page)=> page > 0 ? page - 1 : 0)}}>-</button>
+                    <p>{page+1}/{sortedEmployees.length}</p>
+                    <button className="nextpage" onClick={()=>{setPage((page)=> page+1 < sortedEmployees.length ? page + 1 : sortedEmployees.length - 1)}}>+</button>
                 </div>
             </React.Fragment>
          : <p>Employees list is empty</p>
