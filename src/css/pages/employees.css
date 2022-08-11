@@ -1,6 +1,8 @@
 .employeesmain{
     display: flex;
+    flex-direction: column;
     justify-content: start;
+    overflow-x: hidden;
     align-items: flex-start;
     padding: 0 1em;
 }

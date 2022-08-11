@@ -1,6 +1,7 @@
 .tableContainer{
+    position: relative;
     overflow-x: auto;
-    overflow-y: hidden;
+    max-width: calc(100% - 2em);
     margin: 3em auto;
     background-color: white;
     padding-right: 2em;
@@ -17,6 +18,7 @@ table{
 table::after{
     content: "";
     position: absolute;
+    top: 0;
     right: -2em;
     height: 100%;
     width: 2em;
@@ -55,4 +57,20 @@ th button{
 
 tbody tr{
     height: 6em;
+}
+
+.maxrows{
+    margin-left: 50%;
+    transform: translate(-1050%);
+    padding: .1em 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 100vw;
+}
+
+@media screen and (max-width: 1150px){
+    .maxrows{
+        margin: 0;
+        transform: translate(0);
+    }
 }
