@@ -15,6 +15,10 @@
     }
 }
 
+.searchemployee{
+    outline: none;
+}
+
 .tableContainer{
     position: relative;
     overflow-x: auto;
@@ -30,6 +34,7 @@ table{
     margin: 2em 0 2em 2em;
     width: 68em;
     border-collapse: collapse;
+    table-layout:fixed;
 }
 
 table::after{
@@ -61,8 +66,10 @@ th, td{
 }
 
 td{
+    white-space: nowrap;
     overflow: hidden;
-    word-wrap: break-word;
+    text-overflow: ellipsis;
+    padding: .6em;
 }
 
 th button{
@@ -88,4 +95,47 @@ tbody tr{
     padding: .2em .4em;
     font-size: 1.2em;
     border-radius: 100vw;
+}
+
+.pagination button{
+    position: relative;
+    width: 1.3em;
+    height: 1.3em;
+    background-color: transparent;
+    border: none;
+    border-left: white solid .4em;
+    border-top: white solid .4em;
+    cursor: pointer;
+}
+
+.pagination button:nth-child(1){
+    transform: rotate(-45deg);
+}
+
+.pagination button:nth-child(3){
+    transform: rotate(135deg);
+}
+
+.emptylist{
+    background-color: white !important;
+    height: auto;
+}
+
+.emptylist td{
+    position: relative;
+    overflow: visible;
+}
+
+.emptylist td:first-child{
+    background-color: grey;
+    position: absolute;
+    width: 100%;
+    color: white;
+    z-index: 1;
+}
+
+@media screen and (max-width: 800px){
+    .emptylist td:first-child{
+        text-align: start;
+    }
 }
