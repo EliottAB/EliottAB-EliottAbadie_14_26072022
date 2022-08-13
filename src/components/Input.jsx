@@ -62,7 +62,6 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
                     required
                     error={inputError.error}
                     helperText={inputError.message}
-                    value={inputInfos.value}
                     onChange={(e) => handleInput(e.target.value, setInputError, rules)}
                 />
                 )
@@ -90,7 +89,6 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
                     disablePortal
                     options={options}
                     sx={{ width: 300 }}
-                    value={inputInfos.value}
                     onChange={(e) => {
                         handleInput(e.target.textContent, setInputError)
                     }}

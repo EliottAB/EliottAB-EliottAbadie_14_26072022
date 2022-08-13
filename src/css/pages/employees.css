@@ -6,3 +6,39 @@
     align-items: flex-start;
     padding: 0 1em;
 }
+
+.controlltable{
+    display: flex;
+    margin: 0 auto;
+    padding-top: .3em;
+    justify-content: space-between;
+    width: 100vw;
+    max-width: 68em;
+}
+
+.maxrows{
+    height: 1.5em;
+    padding: 0 .1em;
+    font-size: 1.3em;
+    box-shadow: .2em .2em .6em black;
+    cursor: pointer;
+    border: none;
+    border-radius: 100vw;
+}
+
+@media screen and (max-width: 1150px){
+    .maxrows{
+        margin: 0;
+        transform: translate(0);
+    }
+}
+
+.searchemployee{
+    width: 10em;
+    margin-right: 2em;
+    padding: .2em .5em;
+    border: none;
+    outline: none;
+    box-shadow: .2em .2em .6em black;
+    border-radius: 100vw;
+}
