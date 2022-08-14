@@ -21,11 +21,28 @@ form{
     }
 }
 
+@media screen and (max-width: 800px){
+    form{
+        width: calc(100vw - 4em);
+        justify-content: space-between;
+        padding: 3em 2em 2em;
+        margin: -4em 0;
+        border-radius: 0;
+    }
+}
+
 .address{
     display: flex;
     flex-direction: column;
     padding: 0 2em;
     gap: .2em;
+}
+
+@media screen and (max-width: 800px){
+    .address{
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 .savebutton{

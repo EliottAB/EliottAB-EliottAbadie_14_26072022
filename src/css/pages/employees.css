@@ -7,6 +7,12 @@
     padding: 0 1em;
 }
 
+@media screen and (max-width: 800px){
+    .employeesmain{
+        padding: 0;
+    }
+}
+
 .controlltable{
     display: flex;
     margin: 0 auto;
@@ -14,6 +20,14 @@
     justify-content: space-between;
     width: 100vw;
     max-width: 68em;
+}
+
+@media screen and (max-width: 800px){
+    .controlltable{
+        padding: .3em 1em 0;
+        margin-top: 3em;
+        font-size: .8em;
+    }
 }
 
 .maxrows{
@@ -41,4 +55,43 @@
     outline: none;
     box-shadow: .2em .2em .6em black;
     border-radius: 100vw;
+}
+
+.pagination{
+    display: flex;
+    align-items: center;
+    margin: 0 auto 1em;
+}
+
+.pagination p{
+    background-color: white;
+    margin: 0 1em;
+    padding: .2em .4em;
+    font-size: 1.2em;
+    border-radius: 100vw;
+}
+
+.pagination button{
+    position: relative;
+    width: 1.3em;
+    height: 1.3em;
+    background-color: transparent;
+    border: none;
+    border-left: white solid .4em;
+    border-top: white solid .4em;
+    cursor: pointer;
+}
+
+.pagination span{
+    pointer-events: none;
+    color: transparent;
+    user-select: none;
+}
+
+.pagination button:nth-child(1){
+    transform: rotate(-45deg);
+}
+
+.pagination button:nth-child(3){
+    transform: rotate(135deg);
 }

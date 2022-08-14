@@ -12,7 +12,6 @@ export function Employees(){
     const employees = useSelector(state => state.employees)
 
     const [maxEmployees, setMaxEmployees] = useState(10)
-console.log(employees)
     const [page, setPage] = useState(0)
     const [sortedEmployees, setSortedEmployees] = useState(()=>{
         const baseValue = _.orderBy(employees, [defaultSort], ["asc"])
@@ -73,9 +72,10 @@ console.log(employees)
 
     return(
         <Fragment>
-            <img src={BACKGROUND} alt="" className="backgroundImage"/>
+            <img src={BACKGROUND} alt="background" className="backgroundImage"/>
             <Header/>
             <main className="employeesmain">
+                
                 <div className="controlltable">
                     <select className="maxrows" onChange={sortedEmployees[0] ? (e)=>{setPage(0); setMaxEmployees(parseInt(e.target.value))} : null}>
                         <option value="10">10</option>
@@ -85,7 +85,14 @@ console.log(employees)
                     </select>
                     <input type="search" className="searchemployee" placeholder="search" onChange={(e)=>{setPage(0); sortEmployees()}}/>
                 </div>
-                <Table sortedEmployees={sortedEmployees} sortEmployees={sortEmployees} page={page} setPage={setPage}/>
+
+                <Table sortedEmployees={sortedEmployees} sortEmployees={sortEmployees} page={page}/>
+
+                <div className="pagination">
+                    <button className="prevpage" onClick={()=>{setPage((page)=> page > 0 ? page - 1 : 0)}}><span>previous</span></button>
+                    <p>{sortedEmployees[0] ? page+1 : 0}/{sortedEmployees.length}</p>
+                    <button className="nextpage" onClick={()=>{setPage((page)=> page+1 < sortedEmployees.length ? page + 1 : sortedEmployees.length - 1)}}><span>next</span></button>
+                </div>
             </main>
         </Fragment>
     )

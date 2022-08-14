@@ -8,12 +8,26 @@
     border-radius: 1em;
 }
 
+@media screen and (max-width: 800px){
+    .tableContainer{
+        margin: 3em 0;
+        border-radius: 0;
+    }
+}
+
+
 table{
     position: relative;
     margin: 2em 0 2em 2em;
     width: 68em;
     border-collapse: collapse;
     table-layout:fixed;
+}
+
+@media screen and (max-width: 800px){
+    table{
+        font-size: .85em;
+    }
 }
 
 table::after{
@@ -56,39 +70,6 @@ th button{
 
 tbody tr{
     height: 6em;
-}
-
-.pagination{
-    display: flex;
-    align-items: center;
-    margin: 0 auto 1em;
-}
-
-.pagination p{
-    background-color: white;
-    margin: 0 1em;
-    padding: .2em .4em;
-    font-size: 1.2em;
-    border-radius: 100vw;
-}
-
-.pagination button{
-    position: relative;
-    width: 1.3em;
-    height: 1.3em;
-    background-color: transparent;
-    border: none;
-    border-left: white solid .4em;
-    border-top: white solid .4em;
-    cursor: pointer;
-}
-
-.pagination button:nth-child(1){
-    transform: rotate(-45deg);
-}
-
-.pagination button:nth-child(3){
-    transform: rotate(135deg);
 }
 
 .emptylist{

@@ -4,3 +4,66 @@ main{
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 800px){
+    main{
+        min-height: calc(100vh - 4em);
+    }
+    
+    .homemain{
+        justify-content: start;
+        flex-direction: column;
+    }
+}
+
+.hrnetlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10em;
+    width: 10em;
+    margin-top: -6em;
+    transform: translate(-5em);
+    background-color: white;
+    box-shadow: .5em .4em .5em grey;
+    border-radius: 100vw;
+}
+
+@media screen and (max-width: 800px){
+    .hrnetlogo{
+        transform: none;
+        margin: 0;
+        font-size: .65em;
+    }
+}
+
+.hrnetlogo:hover .logoback {
+    scale: 85%;
+}
+
+.hrnetlogo:hover .hrneth1 {
+    scale: 130%;
+}
+
+.hrneth1{
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 0 0 .2em black;
+    scale: 100%;
+    z-index: 1;
+    transition: scale .4s;
+}
+
+.logoback{
+    position: absolute;
+    height: 8em;
+    scale: 100%;
+    user-select: none;
+    transition: scale .4s;
+    animation: rotatelogo 25s infinite linear;
+}
+
+@keyframes rotatelogo {
+    from {transform: rotate(0);}
+    to {transform: rotate(360deg);}
+}

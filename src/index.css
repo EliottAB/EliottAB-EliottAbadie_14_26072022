@@ -35,9 +35,3 @@ code {
   object-position: bottom;
   z-index: -1;
 }
-
-@media screen and (max-width: 720px){
-  body{
-    font-size: 2.22vw;
-  }
-}

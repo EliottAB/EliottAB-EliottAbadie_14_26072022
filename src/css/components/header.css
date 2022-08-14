@@ -6,6 +6,8 @@ header{
 
 @media screen and (max-width: 800px){
     header{
+        font-size: .7em;
+        height: 8em;
         justify-content: space-between;
     }
 }
@@ -24,6 +26,7 @@ header h2{
     header h2{
         margin-left: 1em;
         transform: translateX(0);
+        font-size: 2em;
     }
 }
 

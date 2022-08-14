@@ -2,7 +2,7 @@ import React from "react"
 import "../css/components/table.css"
 import { TableRow } from "./TableRow"
 
-export function Table({sortedEmployees, sortEmployees, page, setPage}){
+export function Table({sortedEmployees, sortEmployees, page}){
 
     return(
             <React.Fragment>
@@ -33,11 +33,6 @@ export function Table({sortedEmployees, sortEmployees, page, setPage}){
                         }
                         </tbody>
                     </table>
-                </div>
-                <div className="pagination">
-                    <button className="prevpage" onClick={()=>{setPage((page)=> page > 0 ? page - 1 : 0)}}/>
-                    <p>{sortedEmployees[0] ? page+1 : 0}/{sortedEmployees.length}</p>
-                    <button className="nextpage" onClick={()=>{setPage((page)=> page+1 < sortedEmployees.length ? page + 1 : sortedEmployees.length - 1)}}/>
                 </div>
             </React.Fragment>
     )
