@@ -34,6 +34,7 @@ form{
 .address{
     display: flex;
     flex-direction: column;
+    width: 20em;
     padding: 0 2em;
     gap: .2em;
 }
@@ -41,7 +42,6 @@ form{
 @media screen and (max-width: 800px){
     .address{
         width: 100%;
-        max-width: 100%;
     }
 }
 
