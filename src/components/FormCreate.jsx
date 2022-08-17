@@ -5,6 +5,7 @@ import { departments, states } from "../formDatas";
 import { Input } from "../components/Input.jsx";
 import { useDispatch } from "react-redux"
 import { createEmployee } from "../redux/store";
+import { Modale } from "classic-modale";
 import "../css/components/formcreate.css"
 
 export function FormCreate(){
@@ -18,6 +19,7 @@ export function FormCreate(){
     const [state, setState] = useState({error: false, value: null})
     const [zip, setZip] = useState({error: false, value: ""})
     const [department, setDepartment] = useState({error: false, value: null})
+    const [modaleOpen, setModaleOpen] = useState(false)
     
     const dispatch = useDispatch()
 
@@ -35,6 +37,7 @@ export function FormCreate(){
                 zip: zip.value,
                 department: department.value
             }))
+            setModaleOpen(true)
         }
     }
 
@@ -56,7 +59,8 @@ export function FormCreate(){
                 <Input type="number" label="Zip Code" inputInfos={zip} setInfos={setZip}/>
             </fieldset>
             <Input type="complete" label="Department" options={departments} inputInfos={department} setInfos={setDepartment}/>
-            <button className="savebutton">Save</button>
+            <button className="savebutton" onClick={()=>test()}>Save</button>
+            <Modale backgroundShadow opened={modaleOpen} setOpen={setModaleOpen} text="Employee successfully created !"/>
         </form>
     )
 }
