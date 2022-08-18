@@ -68,6 +68,28 @@ th button{
     border: none;
 }
 
+.sortrows{
+    display: inline-flex;
+    flex-direction: column;
+    transform: translate(.5em, -.35em);
+}
+
+.sortrows span{
+    display: inline-block;
+    height: .3em;
+    width: .3em;
+    border-top: .2em solid;
+    border-right: .2em solid;
+}
+
+.sortrows span:first-child{
+    transform: translateY(.2em) rotate(-45deg);
+}
+
+.sortrows span:last-child{
+    transform: rotate(135deg);
+}
+
 tbody tr{
     height: 6em;
 }

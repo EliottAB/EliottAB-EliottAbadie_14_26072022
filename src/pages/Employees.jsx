@@ -9,6 +9,7 @@ import "../css/pages/employees.css"
 export function Employees(){
 
     const defaultSort = "firstName"
+    const defaultWay = "asc"
     const employees = useSelector(state => state.employees)
 
     const [maxEmployees, setMaxEmployees] = useState(10)
@@ -18,7 +19,8 @@ export function Employees(){
         return _.chunk(baseValue, maxEmployees)
     })
     const [lastSort, setLastSort] = useState(defaultSort)
-    
+    const [lastWay, setLastWay] = useState(defaultWay)
+
     const searchEmployees = useCallback(()=>{
 
         let searchedEmployees = []
@@ -52,20 +54,22 @@ export function Employees(){
 
     }, [employees])
     
-    const sortEmployees = useCallback((sort = lastSort)=>{
-
+    const sortEmployees = useCallback((sort = lastSort, way = lastWay)=>{
         setSortedEmployees(()=>{
             let searchedEmployees = employees
             if (document.querySelector(".searchemployee").value.length>0) {
                 searchedEmployees = searchEmployees()
             }
-            const baseValue = _.orderBy(searchedEmployees, [sort ? sort : lastSort], ["asc"])
+            const baseValue = _.orderBy(searchedEmployees, [sort ? key => key[sort].toLowerCase() : key => key[lastSort].toLowerCase()], [way])
             setLastSort(sort)
+            setLastWay(way)
             return _.chunk(baseValue, maxEmployees)
         })
         
-    }, [employees, maxEmployees, lastSort, setSortedEmployees, searchEmployees])
+    }, [employees, maxEmployees, lastSort, setSortedEmployees, searchEmployees, lastWay])
     
+
+    //this code is here to apply changes of maxEmployees modification. not inline beacause state is late
     useEffect(()=>{
         sortEmployees()
     }, [maxEmployees, sortEmployees])
@@ -78,15 +82,15 @@ export function Employees(){
                 
                 <div className="controlltable">
                     <select className="maxrows" onChange={sortedEmployees[0] ? (e)=>{setPage(0); setMaxEmployees(parseInt(e.target.value))} : null}>
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
+                        <option value="1">10</option>
+                        <option value="2">25</option>
+                        <option value="3">50</option>
                         <option value="100">100</option>
                     </select>
-                    <input type="search" className="searchemployee" placeholder="search" onChange={(e)=>{setPage(0); sortEmployees()}}/>
+                    <input type="search" className="searchemployee" placeholder="search" onChange={()=>{setPage(0); sortEmployees()}}/>
                 </div>
 
-                <Table sortedEmployees={sortedEmployees} sortEmployees={sortEmployees} page={page}/>
+                <Table sortedEmployees={sortedEmployees} sortEmployees={sortEmployees} page={page} lastSort={lastSort}/>
 
                 <div className="pagination">
                     <button className="prevpage" onClick={()=>{setPage((page)=> page > 0 ? page - 1 : 0)}}><span>previous</span></button>

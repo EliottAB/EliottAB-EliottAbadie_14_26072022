@@ -1,24 +1,25 @@
 import React from "react"
 import "../css/components/table.css"
 import { TableRow } from "./TableRow"
+import { TableHeadCase } from "./TableHeadCase"
 
-export function Table({sortedEmployees, sortEmployees, page}){
-
+export function Table({sortedEmployees, sortEmployees, page, lastSort}){
+    
     return(
             <React.Fragment>
                 <div className="tableContainer">
                     <table className="employeelist">
                         <thead>
                             <tr>
-                                <th><button onClick={()=>{sortEmployees("firstName")}}>First Name</button></th>
-                                <th><button onClick={()=>{sortEmployees("lastName")}}>Last Name</button></th>
-                                <th><button onClick={()=>{sortEmployees("startDate")}}>Start Date</button></th>
-                                <th><button onClick={()=>{sortEmployees("department")}}>Department</button></th>
-                                <th><button onClick={()=>{sortEmployees("birthDate")}}>Date of Birth</button></th>
-                                <th><button onClick={()=>{sortEmployees("street")}}>Street</button></th>
-                                <th><button onClick={()=>{sortEmployees("city")}}>City</button></th>
-                                <th><button onClick={()=>{sortEmployees("state")}}>State</button></th>
-                                <th><button onClick={()=>{sortEmployees("zip")}}>Zip Code</button></th>
+                                <TableHeadCase name="First Name" value="firstName" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="Last Name" value="lastName" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="Start Date" value="startDate" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="Department" value="department" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="Date of Birth" value="birthDate" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="Street" value="street" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="City" value="city" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="State" value="state" lastSort={lastSort} sortEmployees={sortEmployees}/>
+                                <TableHeadCase name="Zip code" value="zip" lastSort={lastSort} sortEmployees={sortEmployees}/>
                             </tr>
                         </thead>
                         <tbody>
