@@ -58,6 +58,7 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
                 <TextField 
                     label={label}
                     variant="standard"
+                    value={inputInfos.value}
                     sx={{ width: "100%", maxWidth: 200}}
                     InputProps={{ inputProps: type === "number" ? { inputMode: 'numeric', pattern: "[0-9]{5}" } : {} }}
                     required
@@ -88,12 +89,13 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
             return(
                 <Autocomplete
                     disablePortal
+                    value={inputInfos.value}
                     options={options}
                     sx={{ width: "100%", maxWidth: 300}}
                     onChange={(e) => {
                         handleInput(e.target.textContent, setInputError)
                     }}
-                    renderInput={(params) => <TextField 
+                    renderInput={(params) => <TextField
                         {...params}
                         label={label}
                         required

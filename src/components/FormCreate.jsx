@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { departments, states } from "../formDatas";
@@ -19,9 +19,15 @@ export function FormCreate(){
     const [state, setState] = useState({error: false, value: null})
     const [zip, setZip] = useState({error: false, value: ""})
     const [department, setDepartment] = useState({error: false, value: null})
+
     const [modaleOpen, setModaleOpen] = useState(false)
     
     const dispatch = useDispatch()
+
+    useEffect(() => {
+      console.log(modaleOpen)
+    }, [modaleOpen])
+    
 
     function handleSubmit(e){
         e.preventDefault()
@@ -37,6 +43,16 @@ export function FormCreate(){
                 zip: zip.value,
                 department: department.value
             }))
+            setFirstName({error: false, value: ""})
+            setLastName({error: false, value: ""})
+            setBirthDate({error: false, value: ""})
+            setStartDate({error: false, value: ""})
+            setCity({error: false, value: ""})
+            setStreet({error: false, value: ""})
+            setState({error: false, value: null})
+            setZip({error: false, value: ""})
+            setDepartment({error: false, value: null})
+            
             setModaleOpen(true)
         }
     }
@@ -59,8 +75,8 @@ export function FormCreate(){
                 <Input type="number" label="Zip Code" inputInfos={zip} setInfos={setZip}/>
             </fieldset>
             <Input type="complete" label="Department" options={departments} inputInfos={department} setInfos={setDepartment}/>
-            <button className="savebutton" onClick={()=>test()}>Save</button>
-            <Modale backgroundShadow opened={modaleOpen} setOpen={setModaleOpen} text="Employee successfully created !"/>
+            <button className="savebutton">Save</button>
+            {modaleOpen && <Modale backgroundShadow setOpen={setModaleOpen} text="Employee successfully created !"/>}
         </form>
     )
 }
