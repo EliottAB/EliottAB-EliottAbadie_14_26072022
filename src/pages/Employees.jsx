@@ -27,13 +27,15 @@ export function Employees(){
         let search = document.querySelector(".searchemployee").value.toLowerCase().split(" ")
 
         employees.forEach(employee => {
+
             //count to check if all words in searchbar are presents.
                 let countword = 0
-                
                 search.forEach(word => {
+
                     //"stop" stop the algorythm to search 2 valids values. 1 is enough.
                     let stop = false
                     Object.values(employee).forEach(element => {
+
                         //this condition transform the date for be able to find it
                         if (new Date(element).getDate()) {
                             const date = new Date(element)
@@ -45,7 +47,6 @@ export function Employees(){
                         }
                     });
                 });
-
                 if (countword >= search.length) {
                     searchedEmployees.push(employee)
                 }
