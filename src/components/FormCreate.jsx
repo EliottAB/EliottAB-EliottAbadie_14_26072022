@@ -24,11 +24,6 @@ export function FormCreate(){
     
     const dispatch = useDispatch()
 
-    useEffect(() => {
-      console.log(modaleOpen)
-    }, [modaleOpen])
-    
-
     function handleSubmit(e){
         e.preventDefault()
         if (!(firstName.error || lastName.error || birthDate.error || city.error ||street.error)) {
