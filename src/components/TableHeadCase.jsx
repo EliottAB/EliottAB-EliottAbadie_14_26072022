@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 export function TableHeadCase({name, value, lastSort, sortEmployees}) {
 
   const [way, setway] = useState("asc")
-
+  
+  //change the way to sort the employees
   function handleWay(){
       if (way === "asc") {
           setway("desc")

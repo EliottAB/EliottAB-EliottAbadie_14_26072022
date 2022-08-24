@@ -9,8 +9,12 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
     
     const [inputError, setInputError] = useState({error: false, message: " "})
     
+    //this function check if anything is wrong in the inputs.
     function handleInput(value, setError, rules){
         let error = false
+        if (value === null || undefined) {
+            value = ""
+        }
 
         if (rules === "text") {
             if (value.length > 0 && value.length < 3) {
@@ -62,63 +66,58 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
         }
     }
     
-    function getComponent(){
-        if (type === "text" || type === "number") {
-            return(
-                <TextField 
+    //return the MUI components and his props, depending of the "type" prop.
+    if (type === "text" || type === "number") {
+        return(
+            <TextField 
+                label={label}
+                variant="standard"
+                value={inputInfos.value}
+                sx={{ width: "100%", maxWidth: 200}}
+                InputProps={{ inputProps: type === "number" ? { inputMode: 'numeric', pattern: "[0-9]{5}" } : {} }}
+                required
+                error={inputError.error}
+                helperText={inputError.message}
+                onChange={(e) => handleInput(e.target.value, setInputError, rules)}
+            />
+            )
+        }
+    if (type === "date") {
+        return(
+            <DatePicker
+                label={label}
+                value={inputInfos.value}
+                onChange={(e) => {
+                    handleInput(e, setInputError, rules)
+                }}
+                renderInput={(params) => <TextField 
+                    {...params}
+                    error={inputError.error}
+                    helperText={inputError.message}
+                    required
+                />}
+            />
+        )
+    }
+    if (type === "complete") {
+        return(
+            <Autocomplete
+                disablePortal
+                value={inputInfos.value}
+                options={options}
+                sx={{ width: "100%", maxWidth: 300}}
+                onChange={(e) => {
+                    handleInput(e.target.textContent, setInputError)
+                }}
+                renderInput={(params) => <TextField
+                    {...params}
                     label={label}
-                    variant="standard"
-                    value={inputInfos.value}
-                    sx={{ width: "100%", maxWidth: 200}}
-                    InputProps={{ inputProps: type === "number" ? { inputMode: 'numeric', pattern: "[0-9]{5}" } : {} }}
                     required
                     error={inputError.error}
                     helperText={inputError.message}
-                    onChange={(e) => handleInput(e.target.value, setInputError, rules)}
-                />
-                )
-            }
-        if (type === "date") {
-            return(
-                <DatePicker
-                    label={label}
-                    value={inputInfos.value}
-                    onChange={(e) => {
-                        handleInput(e, setInputError, rules)
-                    }}
-                    renderInput={(params) => <TextField 
-                        {...params}
-                        error={inputError.error}
-                        helperText={inputError.message}
-                        required
-                    />}
-                />
-            )
-        }
-        if (type === "complete") {
-            return(
-                <Autocomplete
-                    disablePortal
-                    value={inputInfos.value}
-                    options={options}
-                    sx={{ width: "100%", maxWidth: 300}}
-                    onChange={(e) => {
-                        handleInput(e.target.textContent, setInputError)
-                    }}
-                    renderInput={(params) => <TextField
-                        {...params}
-                        label={label}
-                        required
-                        error={inputError.error}
-                        helperText={inputError.message}
-                        />
-                    }
-                />
-            )
-        }
+                    />
+                }
+            />
+        )
     }
-
-    return(
-        getComponent()
-    )
 })

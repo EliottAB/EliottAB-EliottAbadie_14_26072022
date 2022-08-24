@@ -22,10 +22,8 @@ export function Employees(){
     const [lastWay, setLastWay] = useState(defaultWay)
 
     const searchEmployees = useCallback(()=>{
-
         let searchedEmployees = []
         let search = document.querySelector(".searchemployee").value.toLowerCase().split(" ")
-
         employees.forEach(employee => {
 
             //count to check if all words in searchbar are presents.
@@ -52,7 +50,6 @@ export function Employees(){
                 }
             });
         return searchedEmployees
-
     }, [employees])
     
     const sortEmployees = useCallback((sort = lastSort, way = lastWay)=>{

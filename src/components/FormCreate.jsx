@@ -24,6 +24,7 @@ export function FormCreate(){
     
     const dispatch = useDispatch()
 
+    //this function put the form datas in Reduce, clear the form and display the modale.
     function handleSubmit(e){
         e.preventDefault()
         if (!(firstName.error || lastName.error || birthDate.error || startDate.error || city.error || street.error)) {
