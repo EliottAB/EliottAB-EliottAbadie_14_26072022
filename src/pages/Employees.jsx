@@ -83,9 +83,9 @@ export function Employees(){
                 
                 <div className="controlltable">
                     <select className="maxrows" onChange={sortedEmployees[0] ? (e)=>{setPage(0); setMaxEmployees(parseInt(e.target.value))} : null}>
-                        <option value="1">10</option>
-                        <option value="2">25</option>
-                        <option value="3">50</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
                         <option value="100">100</option>
                     </select>
                     <input type="search" className="searchemployee" placeholder="search" onChange={()=>{setPage(0); sortEmployees()}}/>
