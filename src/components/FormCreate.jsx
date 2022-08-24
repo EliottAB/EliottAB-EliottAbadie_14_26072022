@@ -26,7 +26,7 @@ export function FormCreate(){
 
     function handleSubmit(e){
         e.preventDefault()
-        if (!(firstName.error || lastName.error || birthDate.error || city.error ||street.error)) {
+        if (!(firstName.error || lastName.error || birthDate.error || startDate.error || city.error || street.error)) {
             dispatch(createEmployee({
                 firstName: firstName.value,
                 lastName: lastName.value,
@@ -59,7 +59,7 @@ export function FormCreate(){
 
             <LocalizationProvider dateAdapter={AdapterMoment}>
                 <Input type="date" label="Date of Birth" rules="birthdate" inputInfos={birthDate} setInfos={setBirthDate}/>
-                <Input type="date" label="Start Date" inputInfos={startDate} setInfos={setStartDate}/>
+                <Input type="date" label="Start Date" rules="startdate" inputInfos={startDate} setInfos={setStartDate}/>
             </LocalizationProvider>
 
             <fieldset className="address">

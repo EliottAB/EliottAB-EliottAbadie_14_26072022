@@ -26,11 +26,21 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
             }
         }
 
+        if (rules === "birthdate" || rules === "startdate") {
+            if (!value._isValid) {
+               setError({error: true, message: "invalid date"})
+               error = true
+            }else{
+                setError({error: false, message: " "})
+            }
+        }
+
         if (rules === "birthdate") {
             if(value > new Date()){
                 setError({error: true, message: "Negative birth date"})
                 error = true
-            }else{
+            }
+            if(error === false){
                 setError({error: false, message: " "})
             }
         }
