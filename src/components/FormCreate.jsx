@@ -12,8 +12,8 @@ export function FormCreate(){
 
     const [firstName, setFirstName] = useState({error: false, value: ""})
     const [lastName, setLastName] = useState({error: false, value: ""})
-    const [birthDate, setBirthDate] = useState({error: false, value: ""})
-    const [startDate, setStartDate] = useState({error: false, value: ""})
+    const [birthDate, setBirthDate] = useState({error: false, value: new Date()})
+    const [startDate, setStartDate] = useState({error: false, value: new Date()})
     const [city, setCity] = useState({error: false, value: ""})
     const [street, setStreet] = useState({error: false, value: ""})
     const [state, setState] = useState({error: false, value: null})
@@ -31,8 +31,8 @@ export function FormCreate(){
             dispatch(createEmployee({
                 firstName: firstName.value,
                 lastName: lastName.value,
-                birthDate: birthDate.value._d.toISOString(),
-                startDate: startDate.value._d.toISOString(),
+                birthDate: birthDate.value.toISOString(),
+                startDate: startDate.value.toISOString(),
                 city: city.value,
                 street: street.value,
                 state: state.value,
@@ -41,8 +41,8 @@ export function FormCreate(){
             }))
             setFirstName({error: false, value: ""})
             setLastName({error: false, value: ""})
-            setBirthDate({error: false, value: ""})
-            setStartDate({error: false, value: ""})
+            setBirthDate({error: false, value: new Date()})
+            setStartDate({error: false, value: new Date()})
             setCity({error: false, value: ""})
             setStreet({error: false, value: ""})
             setState({error: false, value: null})

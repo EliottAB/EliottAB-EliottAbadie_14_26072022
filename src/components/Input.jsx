@@ -31,7 +31,7 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
         }
 
         if (rules === "birthdate" || rules === "startdate") {
-            if (!value._isValid) {
+            if (value && !value.getYear()) {
                setError({error: true, message: "invalid date"})
                error = true
             }else{
@@ -50,7 +50,7 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
         }
         
         if (rules === "address") {
-            if(value.match(/[^A-Za-zÀ-ÿ- ]/)){
+            if(value.match(/[^A-Za-zÀ-ÿ-0-9 ]/)){
                 setError({error: true, message: "Bad character"})
                 error = true
             }else{
@@ -88,7 +88,7 @@ export const Input = React.memo(({type, label, rules, options, inputInfos, setIn
                 label={label}
                 value={inputInfos.value}
                 onChange={(e) => {
-                    handleInput(e, setInputError, rules)
+                    handleInput(e ? e._d : e, setInputError, rules)
                 }}
                 renderInput={(params) => <TextField 
                     {...params}
